@@ -1,0 +1,13 @@
+{
+  "name": "quotone",
+  "version": "1.0",
+  "description": "insert quote automatically",
+  "manifest_version": 2,
+  "content_scripts": [
+    {
+      "matches": ["https://*.cybozu.com/k/*"],
+      "js": ["src/content_script.ts"]
+    }
+  ],
+  "permissions": ["https://*/*"]
+}

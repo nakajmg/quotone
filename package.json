@@ -1,0 +1,23 @@
+{
+  "name": "quotone",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "author": "nakajmg",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "start": "npm run dev"
+  },
+  "devDependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^11.0.0",
+    "@rollup/plugin-typescript": "^8.0.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.34.2",
+    "rollup-plugin-chrome-extension": "^3.4.0",
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "^4.1.2"
+  }
+}
