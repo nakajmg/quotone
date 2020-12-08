@@ -16,6 +16,8 @@ const commentOuterClassName = "ocean-ui-comments-post";
 (() => {
   setTimeout(() => {
     document.body.addEventListener("click", (e: Event) => {
+      if (document.body.dataset.quotoneEnabled !== "true") return;
+
       const targetEl = e.target as HTMLElement;
       if (targetEl.tagName.toLowerCase() !== "a") return;
       if (
@@ -69,4 +71,24 @@ const commentOuterClassName = "ocean-ui-comments-post";
       }, 100);
     });
   }, 500);
+
+  function initialize() {
+    chrome.storage.sync.get("quotoneEnabled", ({ quotoneEnabled = true }) => {
+      setEnabled(quotoneEnabled);
+    });
+    chrome.storage.onChanged.addListener((changes) => {
+      if (!changes.quotoneEnabled) return;
+
+      chrome.storage.sync.set({
+        quotoneEnabled: changes.quotoneEnabled.newValue,
+      });
+      setEnabled(changes.quotoneEnabled.newValue);
+    });
+  }
+
+  function setEnabled(enabled: boolean) {
+    document.body.dataset.quotoneEnabled = enabled.toString();
+  }
+
+  initialize();
 })();

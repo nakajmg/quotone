@@ -3,11 +3,23 @@
   "version": "1.0",
   "description": "insert quote automatically",
   "manifest_version": 2,
+  "browser_action": {
+    "default_icon": {
+      "16": "assets/icon16.png",
+      "48": "assets/icon48.png",
+      "128": "assets/icon128.png"
+    },
+    "default_title": "quotone"
+  },
   "content_scripts": [
     {
       "matches": ["https://*.cybozu.com/k/*"],
       "js": ["src/content_script.ts"]
     }
   ],
-  "permissions": ["https://*/*"]
+  "permissions": ["storage", "https://*.cybozu.com/k/*"],
+  "background": {
+    "scripts": ["src/background.ts"],
+    "persistent": false
+  }
 }
