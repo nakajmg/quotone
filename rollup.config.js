@@ -1,7 +1,8 @@
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 import json from "@rollup/plugin-json";
-import copy from "rollup-plugin-copy";
+import copy from "rollup-plugin-copy2";
+import zip from "rollup-plugin-zip";
 import packageJson from "./package.json";
 import {
   chromeExtension,
@@ -20,16 +21,12 @@ export default [
       chromeExtension(),
       simpleReloader(),
       copy({
-        targets: [
-          {
-            src: "assets",
-            dest: "dist",
-          },
-        ],
+        assets: ["assets/icon48_gray.png"],
       }),
       json(),
       resolve(),
       typescript(),
+      zip(),
     ],
   },
 ];
